@@ -1,5 +1,6 @@
 ---
 import type { Lang } from '../../i18n/ui';
+import Icon from '../ui/Icon.astro';
 
 interface Props {
   lang: Lang;
@@ -51,13 +52,13 @@ const c = content[lang];
     </div>
     <div class="pt-2">
       <a
-        href="https://linkedin.com/in/michaelmakowiecki"
+        href="https://www.linkedin.com/in/mmakowiecki/"
         target="_blank"
         rel="noopener noreferrer"
-        class="text-ember font-medium hover:text-ember-dark transition-colors inline-flex items-center gap-2"
+        class="block hover:opacity-80 transition-opacity"
+        aria-label="LinkedIn"
       >
-        {c.linkedin}
-        <span aria-hidden="true">&rarr;</span>
+        <Icon name="linkedin-color" class="w-full [&>svg]:w-full [&>svg]:h-auto" />
       </a>
     </div>
   </div>

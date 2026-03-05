@@ -12,34 +12,63 @@ interface Props {
 }
 
 const { icon, title, subtitle, body, bullets = [], tags = [], reversed = false } = Astro.props;
+const hasExpandable = bullets.length > 0 || tags.length > 0;
 ---
 
-<div class:list={['grid md:grid-cols-[auto_1fr] gap-8 items-start rounded-sm bg-ember p-8', reversed && 'md:grid-cols-[1fr_auto] md:[direction:rtl] md:[&>*]:[direction:ltr]']}>
+<div class="service-area grid md:grid-cols-[auto_1fr] gap-8 items-start rounded-sm bg-ember p-8">
   <div class="flex-shrink-0">
     <Icon name={icon} class="w-16 h-16 text-white [&>svg]:w-16 [&>svg]:h-16" />
   </div>
   <div>
     <h3 class="font-heading text-2xl font-bold text-white mb-1">{title}</h3>
     {subtitle && <p class="text-white/60 text-sm font-medium mb-4">{subtitle}</p>}
-    <p class="text-white/80 leading-relaxed text-lg mb-4">{body}</p>
-    {bullets.length > 0 && (
-      <ul class="space-y-3 mb-6">
-        {bullets.map((bullet) => (
-          <li class="text-white/80 leading-relaxed flex gap-3">
-            <span class="text-solar mt-1 shrink-0">&#x2022;</span>
-            <span>{bullet}</span>
-          </li>
-        ))}
-      </ul>
-    )}
-    {tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mt-4">
-        {tags.map((tag) => (
-          <span class="inline-block text-xs font-medium bg-white/15 text-white/90 px-3 py-1 rounded-full">
-            {tag}
-          </span>
-        ))}
-      </div>
+    <p class="text-white/80 leading-relaxed text-lg">{body}</p>
+    {hasExpandable && (
+      <>
+        <div class="service-expandable hidden mt-4">
+          {bullets.length > 0 && (
+            <ul class="space-y-3 mb-6">
+              {bullets.map((bullet) => (
+                <li class="text-white/80 leading-relaxed flex gap-3">
+                  <span class="text-solar mt-1 shrink-0">&#x2022;</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 mt-4">
+              {tags.map((tag) => (
+                <span class="inline-block text-xs font-medium bg-white/15 text-white/90 px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        <button class="service-toggle mt-4 text-solar text-sm font-medium hover:text-solar-light transition-colors inline-flex items-center gap-1">
+          <span class="toggle-label">More</span>
+          <svg class="w-4 h-4 transition-transform toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </>
     )}
   </div>
 </div>
+
+<script is:inline>
+  if (!window.__serviceToggleInit) {
+    window.__serviceToggleInit = true;
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.service-toggle');
+      if (!btn) return;
+      const area = btn.closest('.service-area');
+      const content = area.querySelector('.service-expandable');
+      if (!content) return;
+      const isHidden = content.classList.toggle('hidden');
+      btn.querySelector('.toggle-label').textContent = isHidden ? 'More' : 'Less';
+      btn.querySelector('.toggle-arrow').style.transform = isHidden ? '' : 'rotate(180deg)';
+    });
+  }
+</script>

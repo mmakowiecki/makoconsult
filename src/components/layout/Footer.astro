@@ -1,5 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
+import Icon from '../ui/Icon.astro';
 import { useTranslations, getLocalizedPath } from '../../i18n/utils';
 import type { Lang } from '../../i18n/ui';
 
@@ -33,8 +34,8 @@ const legalItems = [
     <div class="grid gap-12 md:grid-cols-3">
       <!-- Logo & tagline -->
       <div>
-        <span class="inline-block h-7 w-auto [&>svg]:h-7 [&>svg]:w-auto mb-4" set:html={logoSvg} />
-        <p class="text-sm text-gray-400">{t('footer.tagline')}</p>
+        <span class="block w-48 [&>svg]:w-full [&>svg]:h-auto mb-4" set:html={logoSvg} />
+        <p class="text-sm text-gray-400 leading-relaxed">Strategic marketing consultancy based in Hamburg. Helping companies find clarity on positioning, messaging, and growth — strategy built from understanding first.</p>
       </div>
 
       <!-- Navigation -->
@@ -63,6 +64,15 @@ const legalItems = [
             </a>
           ))}
         </nav>
+        <a
+          href="https://www.linkedin.com/in/mmakowiecki/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block mt-4 text-gray-400 hover:text-white transition-colors"
+          aria-label="LinkedIn"
+        >
+          <Icon name="linkedin-bw" class="w-6 h-6 [&>svg]:w-6 [&>svg]:h-6 brightness-0 invert" />
+        </a>
       </div>
     </div>
 
