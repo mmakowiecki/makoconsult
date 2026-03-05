@@ -1,12 +1,38 @@
 ---
+import { Image } from 'astro:assets';
 import Container from '../ui/Container.astro';
 
-const clientLogos = import.meta.glob('/src/assets/logos/clients/*.svg', { query: '?raw', import: 'default', eager: true });
+import logo4flow from '../../assets/logos/clients/4flow.jpg';
+import logoBacardi from '../../assets/logos/clients/bacardi.jpeg';
+import logoBat from '../../assets/logos/clients/bat.png';
+import logoBombay from '../../assets/logos/clients/bombay-sapphire.png';
+import logoGlo from '../../assets/logos/clients/glo.png';
+import logoGreyGoose from '../../assets/logos/clients/grey-goose.png';
+import logoImperial from '../../assets/logos/clients/imperial-brands.png';
+import logoMetro from '../../assets/logos/clients/metro.png';
+import logoScholz from '../../assets/logos/clients/scholz-friends.png';
+import logoServiceplan from '../../assets/logos/clients/serviceplan.png';
+import logoTchibo from '../../assets/logos/clients/tchibo.webp';
+import logoVodafone from '../../assets/logos/clients/vodafone.png';
+import logoWeischer from '../../assets/logos/clients/weischer.jpg';
+import logoVorwerk from '../../assets/logos/clients/vorwerk.svg';
 
-const clients = Object.entries(clientLogos).map(([path, svg]) => {
-  const name = path.split('/').pop()?.replace('.svg', '') || '';
-  return { name, svg: svg as string };
-});
+const clients = [
+  { name: '4flow', src: logo4flow },
+  { name: 'Bacardi', src: logoBacardi },
+  { name: 'BAT', src: logoBat },
+  { name: 'Bombay Sapphire', src: logoBombay },
+  { name: 'glo', src: logoGlo },
+  { name: 'Grey Goose', src: logoGreyGoose },
+  { name: 'Imperial Brands', src: logoImperial },
+  { name: 'METRO', src: logoMetro },
+  { name: 'Scholz & Friends', src: logoScholz },
+  { name: 'Serviceplan', src: logoServiceplan },
+  { name: 'Tchibo', src: logoTchibo },
+  { name: 'Vodafone', src: logoVodafone },
+  { name: 'Vorwerk', src: logoVorwerk },
+  { name: 'Weischer', src: logoWeischer },
+];
 ---
 
 <section class="py-16 border-y border-gray-100">
@@ -15,13 +41,10 @@ const clients = Object.entries(clientLogos).map(([path, svg]) => {
   </Container>
   <div class="overflow-hidden">
     <div class="logo-scroll flex items-center gap-16 w-max">
-      {/* Duplicate logos for seamless loop */}
-      {[...clients, ...clients].map(({ name, svg }) => (
-        <span
-          class="inline-block h-8 sm:h-10 w-auto shrink-0 [&>svg]:h-full [&>svg]:w-auto grayscale opacity-60"
-          title={name}
-          set:html={svg}
-        />
+      {[...clients, ...clients].map(({ name, src }) => (
+        typeof src === 'string'
+          ? <img src={src} alt={name} class="h-8 sm:h-10 w-auto shrink-0 object-contain grayscale opacity-60" />
+          : <Image src={src} alt={name} height={40} class="h-8 sm:h-10 w-auto shrink-0 object-contain grayscale opacity-60" />
       ))}
     </div>
   </div>
@@ -29,7 +52,7 @@ const clients = Object.entries(clientLogos).map(([path, svg]) => {
 
 <style>
   .logo-scroll {
-    animation: scroll 30s linear infinite;
+    animation: scroll 40s linear infinite;
   }
 
   .logo-scroll:hover {
