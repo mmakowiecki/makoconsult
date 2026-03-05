@@ -16,8 +16,8 @@ const deUrl = getLocalizedPath('de', canonicalPath);
   <a
     href={enUrl}
     class:list={[
-      'transition-colors hover:text-ember',
-      lang === 'en' ? 'text-ember font-semibold' : 'text-steel',
+      'lang-link relative pb-1 transition-colors hover:text-ember',
+      lang === 'en' ? 'text-ember font-semibold active' : 'text-steel',
     ]}
   >
     EN
@@ -26,10 +26,31 @@ const deUrl = getLocalizedPath('de', canonicalPath);
   <a
     href={deUrl}
     class:list={[
-      'transition-colors hover:text-ember',
-      lang === 'de' ? 'text-ember font-semibold' : 'text-steel',
+      'lang-link relative pb-1 transition-colors hover:text-ember',
+      lang === 'de' ? 'text-ember font-semibold active' : 'text-steel',
     ]}
   >
     DE
   </a>
 </div>
+
+<style>
+  .lang-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-ember);
+    transition: width 0.3s ease;
+  }
+
+  .lang-link.active::after {
+    width: 100%;
+  }
+
+  .lang-link:hover::after {
+    width: 100%;
+  }
+</style>
