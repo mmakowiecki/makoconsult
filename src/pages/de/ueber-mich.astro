@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CareerNarrative from '../../components/about/CareerNarrative.astro';
+import PhilosophyGrid from '../../components/about/PhilosophyGrid.astro';
+import CtaBanner from '../../components/home/CtaBanner.astro';
+import TranslationBadge from '../../components/ui/TranslationBadge.astro';
+---
+
+<BaseLayout
+  title="Über mich — Hintergrund & Ansatz"
+  description="Über 15 Jahre strategische Marketingerfahrung bei globalen Marken, B2B-Tech und führenden Agenturen. Erfahren Sie mehr über den Ansatz hinter MAKO Consult."
+  lang="de"
+  canonicalPath="/about"
+>
+  <CareerNarrative lang="de" />
+  <PhilosophyGrid lang="de" />
+  <CtaBanner
+    lang="de"
+    heading="Lassen Sie uns über Ihre Herausforderungen sprechen"
+    body="Bereit, strategische Klarheit für Ihr Marketing aufzubauen? Beginnen Sie mit einem kostenlosen Erstgespräch, um Ihre Situation zu besprechen."
+  />
+  <TranslationBadge />
+</BaseLayout>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2800 800" width="2800" height="800">
+  
+  <path fill="#5D686D" fill-rule="evenodd" d="M 310.0,579.0 L130.0,400.0 L309.0,220.0 L489.0,399.0 L310.0,579.0 Z M 310.5,465.3 L375.8,399.0 L309.0,333.3 L243.3,400.0 L309.0,465.8 L310.5,465.3 Z M 218.3,388.5 L299.0,306.9 L298.5,267.0 L177.0,388.5 L218.3,388.5 Z M 442.0,388.5 L320.1,267.5 L320.1,307.8 L337.8,325.6 L402.2,389.0 L442.0,388.5 Z M 299.0,531.5 L299.0,491.2 L282.2,474.4 L216.9,410.1 L177.0,410.6 L299.0,531.5 Z M 321.0,531.5 L441.5,410.1 L401.2,410.1 L370.0,441.3 L320.1,492.2 L321.0,531.5 Z M 310.0,424.5 L284.6,400.0 L309.0,374.6 L334.5,399.0 L310.0,424.5 Z"/>
+  <text x="590" y="490"
+        font-family="Montserrat, Arial, sans-serif"
+        font-weight="800"
+        font-size="320"
+        fill="#5D686D"
+        letter-spacing="-4">MAKO</text>
+  <text x="1620" y="490"
+        font-family="Montserrat, Arial, sans-serif"
+        font-weight="400"
+        font-size="320"
+        fill="#5D686D">Consult</text>
+</svg>

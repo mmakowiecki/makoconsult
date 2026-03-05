@@ -1,0 +1,72 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Icon from '../ui/Icon.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    eyebrow: 'What We Do',
+    heading: 'Four Areas, One Foundation',
+    intro: 'Strategic clarity brings that framework back into focus.',
+    link: 'Explore All Services',
+    cards: [
+      { icon: 'service-brand', title: 'Brand & Positioning', body: "Clarify who you are, who you serve, and why it matters — with a positioning framework that sticks." },
+      { icon: 'service-communication', title: 'Communication Strategy', body: 'Translate strategy into messaging that resonates: across channels, audiences, and touchpoints.' },
+      { icon: 'service-data', title: 'AI, Data & Analytics', body: 'Build the data foundation that turns marketing activity into measurable business intelligence.' },
+      { icon: 'service-b2b', title: 'B2B Sales & Marketing', body: 'Align sales and marketing around shared frameworks, language, and conversion goals.' },
+    ],
+  },
+  de: {
+    eyebrow: 'Was wir tun',
+    heading: 'Vier Bereiche, ein Fundament',
+    intro: 'Strategische Klarheit bringt diesen Rahmen wieder in den Fokus.',
+    link: 'Alle Leistungen entdecken',
+    cards: [
+      { icon: 'service-brand', title: 'Marke & Positionierung', body: 'Klären Sie, wer Sie sind, wen Sie bedienen und warum es wichtig ist — mit einem Positionierungsrahmen, der hält.' },
+      { icon: 'service-communication', title: 'Kommunikationsstrategie', body: 'Strategie in Botschaften übersetzen, die ankommen: über Kanäle, Zielgruppen und Touchpoints hinweg.' },
+      { icon: 'service-data', title: 'KI, Daten & Analytics', body: 'Das Datenfundament aufbauen, das Marketingaktivitäten in messbare Business Intelligence verwandelt.' },
+      { icon: 'service-b2b', title: 'B2B Sales & Marketing', body: 'Sales und Marketing auf gemeinsame Frameworks, Sprache und Conversion-Ziele ausrichten.' },
+    ],
+  },
+};
+
+const c = content[lang];
+---
+
+<section class="py-20 sm:py-24">
+  <Container>
+    <SectionHeading eyebrow={c.eyebrow}>
+      {c.heading}
+    </SectionHeading>
+
+    <div class="grid sm:grid-cols-2 gap-8 mt-12">
+      {c.cards.map((card) => (
+        <div class="p-8 rounded-sm bg-ember flex gap-6 items-start">
+          <Icon name={card.icon} class="w-12 h-12 shrink-0 text-white [&>svg]:w-12 [&>svg]:h-12" />
+          <div>
+            <h3 class="font-heading text-xl font-bold text-white mb-3">{card.title}</h3>
+            <p class="text-white/80 leading-relaxed">{card.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12">
+      <a
+        href={getLocalizedPath(lang, '/services')}
+        class="text-ember font-medium hover:text-ember-dark transition-colors inline-flex items-center gap-2"
+      >
+        {c.link}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,54 @@
+---
+import { useTranslations, getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  canonicalPath: string;
+}
+
+const { lang, canonicalPath } = Astro.props;
+const t = useTranslations(lang);
+
+const navItems = [
+  { label: t('nav.home'), canonical: '/' },
+  { label: t('nav.services'), canonical: '/services' },
+  { label: t('nav.about'), canonical: '/about' },
+  { label: t('nav.contact'), canonical: '/contact' },
+];
+---
+
+<nav class="hidden md:flex items-center gap-8">
+  {navItems.map(({ label, canonical }) => (
+    <a
+      href={getLocalizedPath(lang, canonical)}
+      class:list={[
+        'nav-link relative text-sm font-medium transition-colors hover:text-ember pb-1',
+        canonicalPath === canonical ? 'text-ember active' : 'text-graphite',
+      ]}
+    >
+      {label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-ember);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+</style>

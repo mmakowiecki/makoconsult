@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Document/page -->
+  <rect x="16" y="10" width="32" height="44" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Document fold corner (top right) -->
+  <path d="M 48 10 L 48 18 L 40 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+  
+  <!-- Horizontal lines representing text/content -->
+  <line x1="22" y1="26" x2="42" y2="26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="22" y1="32" x2="42" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="22" y1="38" x2="36" y2="38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- Checkmark -->
+  <path d="M 28 46 L 32 50 L 40 42" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

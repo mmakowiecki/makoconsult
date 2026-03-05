@@ -1,0 +1,56 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    eyebrow: 'How We Work Together',
+    heading: 'A Structured Path to Clarity',
+    steps: [
+      { icon: 'process-discovery', title: 'Discovery', body: 'Deep-dive into your business context, competitive landscape, and current marketing reality.' },
+      { icon: 'process-strategy', title: 'Strategy', body: 'Develop a clear positioning, messaging, and marketing framework tailored to your goals.' },
+      { icon: 'process-delivery', title: 'Delivery', body: 'Build the assets, systems, and documentation your team needs to execute with confidence.' },
+      { icon: 'process-support', title: 'Support', body: 'Ongoing guidance to refine your approach as your business evolves and grows.' },
+    ],
+  },
+  de: {
+    eyebrow: 'Wie wir zusammenarbeiten',
+    heading: 'Ein strukturierter Weg zur Klarheit',
+    steps: [
+      { icon: 'process-discovery', title: 'Discovery', body: 'Tiefgehende Analyse Ihres Geschäftskontexts, der Wettbewerbslandschaft und der aktuellen Marketingrealität.' },
+      { icon: 'process-strategy', title: 'Strategie', body: 'Entwicklung einer klaren Positionierung, Messaging und Marketing-Frameworks, zugeschnitten auf Ihre Ziele.' },
+      { icon: 'process-delivery', title: 'Umsetzung', body: 'Aufbau der Assets, Systeme und Dokumentation, die Ihr Team für eine sichere Umsetzung braucht.' },
+      { icon: 'process-support', title: 'Begleitung', body: 'Laufende Unterstützung, um Ihren Ansatz weiterzuentwickeln, während Ihr Unternehmen wächst.' },
+    ],
+  },
+};
+
+const c = content[lang];
+---
+
+<section class="py-20 sm:py-24 bg-warm-white">
+  <Container>
+    <SectionHeading eyebrow={c.eyebrow} align="center">
+      {c.heading}
+    </SectionHeading>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+      {c.steps.map((step, i) => (
+        <div class="text-center border-2 border-gray-200 rounded-lg p-8">
+          <div class="font-heading text-6xl font-bold text-ember mb-4">
+            {i + 1}
+          </div>
+          <h4 class="font-heading text-lg font-bold text-graphite mb-3">{step.title}</h4>
+          <p class="text-steel text-sm leading-relaxed">{step.body}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

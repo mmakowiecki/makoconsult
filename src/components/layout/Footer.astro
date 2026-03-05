@@ -1,0 +1,75 @@
+---
+import Container from '../ui/Container.astro';
+import { useTranslations, getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  canonicalPath: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+
+const logos = import.meta.glob('/src/assets/logos/mako/logo-horizontal-white.svg', { query: '?raw', import: 'default', eager: true });
+const logoSvg = logos['/src/assets/logos/mako/logo-horizontal-white.svg'] as string;
+
+const navItems = [
+  { label: t('nav.home'), canonical: '/' },
+  { label: t('nav.services'), canonical: '/services' },
+  { label: t('nav.about'), canonical: '/about' },
+  { label: t('nav.contact'), canonical: '/contact' },
+];
+
+const legalItems = [
+  { label: t('footer.imprint'), canonical: '/imprint' },
+  { label: t('footer.privacy'), canonical: '/privacy' },
+];
+---
+
+<footer class="bg-graphite text-white py-16">
+  <Container>
+    <div class="grid gap-12 md:grid-cols-3">
+      <!-- Logo & tagline -->
+      <div>
+        <span class="inline-block h-7 w-auto [&>svg]:h-7 [&>svg]:w-auto mb-4" set:html={logoSvg} />
+        <p class="text-sm text-gray-400">{t('footer.tagline')}</p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <nav class="flex flex-col gap-3">
+          {navItems.map(({ label, canonical }) => (
+            <a
+              href={getLocalizedPath(lang, canonical)}
+              class="text-sm text-gray-300 hover:text-white transition-colors"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <nav class="flex flex-col gap-3">
+          {legalItems.map(({ label, canonical }) => (
+            <a
+              href={getLocalizedPath(lang, canonical)}
+              class="text-sm text-gray-300 hover:text-white transition-colors"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-700">
+      <p class="text-sm text-gray-500">
+        {t('footer.copyright').replace('{year}', String(year))}
+      </p>
+    </div>
+  </Container>
+</footer>

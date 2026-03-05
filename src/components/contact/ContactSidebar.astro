@@ -1,0 +1,64 @@
+---
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    basedIn: 'Based in',
+    location: 'Hamburg, Germany',
+    workingWith: 'Working with',
+    audience: 'European B2B companies & scale-ups',
+    responseTime: 'Response time',
+    responseValue: 'Within 24 business hours',
+    linkedin: 'LinkedIn Profile',
+  },
+  de: {
+    basedIn: 'Standort',
+    location: 'Hamburg, Deutschland',
+    workingWith: 'Zusammenarbeit mit',
+    audience: 'Europäische B2B-Unternehmen & Scale-ups',
+    responseTime: 'Antwortzeit',
+    responseValue: 'Innerhalb von 24 Geschäftsstunden',
+    linkedin: 'LinkedIn-Profil',
+  },
+};
+
+const c = content[lang];
+---
+
+<div class="bg-warm-white rounded-sm p-8">
+  <h4 class="font-heading text-lg font-bold text-graphite mb-1">Michael Makowiecki</h4>
+  <p class="text-sm text-steel mb-1">Strategic Marketing Consultant</p>
+  <p class="text-sm text-steel mb-6">Founder, MAKO Consult</p>
+
+  <div class="space-y-5">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-1">{c.basedIn}</p>
+      <p class="text-steel">{c.location}</p>
+    </div>
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-1">{c.workingWith}</p>
+      <p class="text-steel">{c.audience}</p>
+    </div>
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-1">{c.responseTime}</p>
+      <p class="text-steel">{c.responseValue}</p>
+    </div>
+    <div class="pt-2">
+      <a
+        href="https://linkedin.com/in/michaelmakowiecki"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-ember font-medium hover:text-ember-dark transition-colors inline-flex items-center gap-2"
+      >
+        {c.linkedin}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</div>

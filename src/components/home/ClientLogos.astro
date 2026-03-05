@@ -1,0 +1,44 @@
+---
+import Container from '../ui/Container.astro';
+
+const clientLogos = import.meta.glob('/src/assets/logos/clients/*.svg', { query: '?raw', import: 'default', eager: true });
+
+const clients = Object.entries(clientLogos).map(([path, svg]) => {
+  const name = path.split('/').pop()?.replace('.svg', '') || '';
+  return { name, svg: svg as string };
+});
+---
+
+<section class="py-16 border-y border-gray-100">
+  <Container>
+    <p class="text-sm font-semibold uppercase tracking-widest text-ember mb-8 text-center">Experience with</p>
+  </Container>
+  <div class="overflow-hidden">
+    <div class="logo-scroll flex items-center gap-16 w-max">
+      {/* Duplicate logos for seamless loop */}
+      {[...clients, ...clients].map(({ name, svg }) => (
+        <span
+          class="inline-block h-8 sm:h-10 w-auto shrink-0 [&>svg]:h-full [&>svg]:w-auto grayscale opacity-60"
+          title={name}
+          set:html={svg}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .logo-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

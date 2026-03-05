@@ -1,0 +1,35 @@
+---
+import { getLocalizedPath, getAlternateLang } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  canonicalPath: string;
+}
+
+const { lang, canonicalPath } = Astro.props;
+const enUrl = getLocalizedPath('en', canonicalPath);
+const deUrl = getLocalizedPath('de', canonicalPath);
+---
+
+<div class="flex items-center gap-1 text-sm font-medium">
+  <a
+    href={enUrl}
+    class:list={[
+      'transition-colors hover:text-ember',
+      lang === 'en' ? 'text-ember font-semibold' : 'text-steel',
+    ]}
+  >
+    EN
+  </a>
+  <span class="text-steel/40">|</span>
+  <a
+    href={deUrl}
+    class:list={[
+      'transition-colors hover:text-ember',
+      lang === 'de' ? 'text-ember font-semibold' : 'text-steel',
+    ]}
+  >
+    DE
+  </a>
+</div>

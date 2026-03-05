@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+import CalendlyEmbed from '../../components/contact/CalendlyEmbed.astro';
+import ContactForm from '../../components/contact/ContactForm.astro';
+import ContactSidebar from '../../components/contact/ContactSidebar.astro';
+import bgImage from '../../assets/stock/consulting-2.png';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Book a free discovery call or send a message. Let's start a conversation about where strategic marketing clarity can help your business."
+  lang="en"
+  canonicalPath="/contact"
+>
+  <!-- Hero -->
+  <section class="relative py-24 sm:py-32 overflow-hidden">
+    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" />
+    <div class="absolute inset-0 bg-graphite/55"></div>
+    <Container class="relative">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-solar mb-6">Get in Touch</p>
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-white leading-tight mb-8">
+          Let's Start a Conversation
+        </h1>
+        <p class="text-lg sm:text-xl text-white/85 leading-relaxed">
+          Whether you have a specific challenge in mind or want to explore whether strategic marketing support makes sense for your business — I'd love to hear from you.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- Main content -->
+  <section class="py-20 sm:py-24">
+    <Container>
+      <div class="grid lg:grid-cols-[1fr_320px] gap-16">
+        <div class="space-y-20">
+          <CalendlyEmbed lang="en" />
+          <ContactForm lang="en" />
+        </div>
+        <aside>
+          <div class="lg:sticky lg:top-24">
+            <ContactSidebar lang="en" />
+          </div>
+        </aside>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

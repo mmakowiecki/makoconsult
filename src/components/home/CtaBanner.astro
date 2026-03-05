@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+import bgImage from '../../assets/stock/consulting-1.png';
+
+interface Props {
+  lang: Lang;
+  heading?: string;
+  body?: string;
+}
+
+const { lang } = Astro.props;
+
+const defaults = {
+  en: {
+    heading: 'Ready to Build a Foundation That Works?',
+    body: "Let's start with a conversation about where marketing clarity would make the biggest difference in your business.",
+    cta: 'Book a Free Consultation',
+  },
+  de: {
+    heading: 'Bereit, ein Fundament aufzubauen, das funktioniert?',
+    body: 'Lassen Sie uns mit einem Gespräch beginnen, wo Marketing-Klarheit den größten Unterschied in Ihrem Unternehmen machen würde.',
+    cta: 'Kostenloses Erstgespräch buchen',
+  },
+};
+
+const c = defaults[lang];
+const heading = Astro.props.heading || c.heading;
+const body = Astro.props.body || c.body;
+---
+
+<section class="relative py-20 sm:py-24 overflow-hidden">
+  <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover object-bottom" widths={[768, 1280, 1920]} sizes="100vw" />
+  <div class="absolute inset-0 bg-graphite/50"></div>
+  <Container class="relative text-center text-white">
+    <h2 class="font-heading text-3xl sm:text-4xl font-bold mb-6">{heading}</h2>
+    <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">{body}</p>
+    <Button href={getLocalizedPath(lang, '/contact')} variant="primary">{c.cta}</Button>
+  </Container>
+</section>
+

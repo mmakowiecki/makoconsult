@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+import profileImg from '../../assets/profile.jpeg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    eyebrow: 'About',
+    heading: 'Strategy first. Always.',
+    body: "I'm Michael Makowiecki — a strategic marketing consultant with 15+ years building and leading marketing functions across B2B tech, SaaS, and professional services. I founded MAKO Consult to work directly with companies that need strategic clarity, not just more marketing activity.",
+    body2: "My approach starts with understanding your situation — market, customers, internal dynamics — before recommending anything. Strategy that fits your context is strategy that works.",
+    link: 'Learn More About Me',
+  },
+  de: {
+    eyebrow: 'Über mich',
+    heading: 'Strategie zuerst. Immer.',
+    body: 'Ich bin Michael Makowiecki — strategischer Marketingberater mit über 15 Jahren Erfahrung im Aufbau und der Leitung von Marketingfunktionen in B2B-Tech, SaaS und Professional Services. Ich habe MAKO Consult gegründet, um direkt mit Unternehmen zu arbeiten, die strategische Klarheit brauchen, nicht nur mehr Marketingaktivität.',
+    body2: 'Mein Ansatz beginnt mit dem Verstehen Ihrer Situation — Markt, Kunden, interne Dynamiken — bevor ich irgendetwas empfehle. Strategie, die zu Ihrem Kontext passt, ist Strategie, die funktioniert.',
+    link: 'Mehr über mich erfahren',
+  },
+};
+
+const c = content[lang];
+---
+
+<section class="py-20 sm:py-24 bg-warm-white">
+  <Container>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <Image
+          src={profileImg}
+          alt="Michael Makowiecki"
+          width={560}
+          height={560}
+          class="rounded-sm w-full object-cover aspect-square"
+        />
+      </div>
+      <div>
+        <SectionHeading eyebrow={c.eyebrow}>
+          {c.heading}
+        </SectionHeading>
+        <blockquote class="border-l-4 border-ember pl-5 mb-8 italic text-graphite text-lg leading-relaxed">
+          "Good strategy makes the direction clear, the priorities obvious, and the hard decisions easier."
+        </blockquote>
+        <p class="text-steel leading-relaxed mb-4">{c.body}</p>
+        <p class="text-steel leading-relaxed mb-8">{c.body2}</p>
+        <a
+          href={getLocalizedPath(lang, '/about')}
+          class="text-ember font-medium hover:text-ember-dark transition-colors inline-flex items-center gap-2"
+        >
+          {c.link}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </Container>
+</section>

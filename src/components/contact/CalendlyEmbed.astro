@@ -1,0 +1,38 @@
+---
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    heading: 'Book a Free Discovery Call',
+    body: 'A 30-minute conversation to understand your situation and explore how I can help. No commitment, no pressure.',
+  },
+  de: {
+    heading: 'Kostenloses Kennenlerngespräch buchen',
+    body: 'Ein 30-minütiges Gespräch, um Ihre Situation zu verstehen und zu erkunden, wie ich helfen kann. Keine Verpflichtung, kein Druck.',
+  },
+};
+
+const c = content[lang];
+---
+
+<div>
+  <h3 class="font-heading text-2xl font-bold text-graphite mb-3">{c.heading}</h3>
+  <p class="text-steel mb-8">{c.body}</p>
+
+  <!-- Calendly inline widget — replace URL with actual Calendly link -->
+  <div
+    class="calendly-inline-widget rounded-sm border border-gray-200 bg-gray-50 min-h-[500px] flex items-center justify-center"
+    data-url="https://calendly.com/makoconsult/discovery"
+    style="min-width:320px;height:630px;"
+  >
+    <p class="text-steel text-sm">Loading scheduling widget...</p>
+  </div>
+
+  <script is:inline src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</div>

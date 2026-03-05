@@ -1,0 +1,57 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    eyebrow: 'Philosophy',
+    heading: 'How I Work',
+    intro: 'Strategic clarity comes from understanding your specific context first, then building solutions that fit your reality.',
+    principles: [
+      { title: 'Discovery Before Solutions', body: "I don't start with solutions. I start with understanding your specific business context — then build strategy that fits your reality, not a template." },
+      { title: 'No Generic Frameworks', body: 'Every business has unique market dynamics, competitive pressures, and internal constraints. Generic frameworks miss what actually matters in your situation.' },
+      { title: 'The Dual Perspective', body: "I've seen strategy from both sides — how companies make decisions internally, and how those strategies get executed in practice. That combination is rare." },
+      { title: 'International Pattern Recognition', body: "Working across markets gives perspective. I've seen how different companies solve similar problems in fundamentally different ways — that helps me spot solutions others miss." },
+      { title: 'Modern Tools, Pragmatic Application', body: 'I use AI and modern data methods — but as tools that serve strategy, not as the strategy itself. Technology should make things clearer, not more complex.' },
+    ],
+  },
+  de: {
+    eyebrow: 'Philosophie',
+    heading: 'Wie ich arbeite',
+    intro: 'Strategische Klarheit entsteht daraus, zuerst Ihren spezifischen Kontext zu verstehen, dann Lösungen zu entwickeln, die zu Ihrer Realität passen.',
+    principles: [
+      { title: 'Verstehen vor Lösungen', body: 'Ich beginne nicht mit Lösungen. Ich beginne damit, Ihren spezifischen Geschäftskontext zu verstehen — dann baue ich eine Strategie, die zu Ihrer Realität passt, nicht zu einer Vorlage.' },
+      { title: 'Keine generischen Frameworks', body: 'Jedes Unternehmen hat einzigartige Marktdynamiken, Wettbewerbsdruck und interne Rahmenbedingungen. Generische Frameworks verfehlen, was in Ihrer Situation wirklich zählt.' },
+      { title: 'Die duale Perspektive', body: 'Ich habe Strategie von beiden Seiten gesehen — wie Unternehmen intern Entscheidungen treffen und wie diese Strategien in der Praxis umgesetzt werden. Diese Kombination ist selten.' },
+      { title: 'Internationale Mustererkennung', body: 'Über Märkte hinweg zu arbeiten gibt Perspektive. Ich habe gesehen, wie verschiedene Unternehmen ähnliche Probleme auf grundlegend unterschiedliche Weisen lösen — das hilft mir, Lösungen zu erkennen, die andere übersehen.' },
+      { title: 'Moderne Tools, pragmatische Anwendung', body: 'Ich nutze KI und moderne Datenmethoden — aber als Werkzeuge im Dienst der Strategie, nicht als Strategie selbst. Technologie sollte Dinge klarer machen, nicht komplexer.' },
+    ],
+  },
+};
+
+const c = content[lang];
+---
+
+<section class="py-20 sm:py-24 bg-warm-white">
+  <Container>
+    <SectionHeading eyebrow={c.eyebrow} subtitle={c.intro}>
+      {c.heading}
+    </SectionHeading>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      {c.principles.map((p) => (
+        <div class="p-8 bg-ember rounded-sm">
+          <h3 class="font-heading text-lg font-bold text-white mb-3">{p.title}</h3>
+          <p class="text-white/80 text-sm leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

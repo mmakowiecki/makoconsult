@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/home/Hero.astro';
+import ServiceCards from '../../components/home/ServiceCards.astro';
+import AboutSnippet from '../../components/home/AboutSnippet.astro';
+import ClientLogos from '../../components/home/ClientLogos.astro';
+import CtaBanner from '../../components/home/CtaBanner.astro';
+import TranslationBadge from '../../components/ui/TranslationBadge.astro';
+---
+
+<BaseLayout
+  title="Strategische Marketingberatung"
+  description="MAKO Consult hilft B2B-Unternehmen, strategische Marketing-Fundamente aufzubauen — Positionierung, Kommunikationsstrategie, Daten & Analytics und Sales-Marketing-Alignment."
+  lang="de"
+  canonicalPath="/"
+>
+  <Hero lang="de" />
+  <ServiceCards lang="de" />
+  <ClientLogos />
+  <AboutSnippet lang="de" />
+  <CtaBanner lang="de" />
+  <TranslationBadge />
+</BaseLayout>

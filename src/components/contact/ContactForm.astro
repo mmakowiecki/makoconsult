@@ -1,0 +1,74 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const heading = lang === 'en' ? 'Or Send a Message' : 'Oder eine Nachricht senden';
+---
+
+<div>
+  <h3 class="font-heading text-2xl font-bold text-graphite mb-6">{heading}</h3>
+
+  <form
+    action="https://formspree.io/f/FORM_ID"
+    method="POST"
+    class="space-y-6"
+  >
+    <input type="hidden" name="_language" value={lang} />
+
+    <div>
+      <label for="name" class="block text-sm font-medium text-graphite mb-2">
+        {t('form.name')}
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        placeholder={t('form.namePlaceholder')}
+        class="w-full px-4 py-3 border border-gray-200 rounded-sm text-graphite placeholder:text-gray-400 focus:outline-none focus:border-ember focus:ring-1 focus:ring-ember transition-colors"
+      />
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium text-graphite mb-2">
+        {t('form.email')}
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder={t('form.emailPlaceholder')}
+        class="w-full px-4 py-3 border border-gray-200 rounded-sm text-graphite placeholder:text-gray-400 focus:outline-none focus:border-ember focus:ring-1 focus:ring-ember transition-colors"
+      />
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-graphite mb-2">
+        {t('form.message')}
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        placeholder={t('form.messagePlaceholder')}
+        class="w-full px-4 py-3 border border-gray-200 rounded-sm text-graphite placeholder:text-gray-400 focus:outline-none focus:border-ember focus:ring-1 focus:ring-ember transition-colors resize-vertical"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="inline-block px-8 py-3 bg-ember text-white font-medium rounded-sm hover:bg-ember-dark transition-colors"
+    >
+      {t('btn.send')}
+    </button>
+  </form>
+</div>

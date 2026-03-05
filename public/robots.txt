@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://makoconsult.com/sitemap-index.xml

@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+import bgImage from '../../assets/stock/abstract-1.jpg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    eyebrow: 'Strategic Marketing Consultancy',
+    heading: 'Strategic clarity for companies where marketing feels reactive',
+    body: "I help companies move from marketing firefighting to strategic direction — through understanding first, then building the foundation that makes everything else work.",
+    cta: 'Book a Free Consultation',
+  },
+  de: {
+    eyebrow: 'Strategische Marketingberatung',
+    heading: 'Strategische Klarheit für Unternehmen, in denen Marketing reaktiv wirkt',
+    body: 'Ich helfe Unternehmen, vom Marketing-Firefighting zur strategischen Ausrichtung zu gelangen — durch Verstehen zuerst, dann den Aufbau des Fundaments, das alles andere funktionieren lässt.',
+    cta: 'Kostenloses Erstgespräch buchen',
+  },
+};
+
+const c = content[lang];
+---
+
+<section class="relative py-24 sm:py-32 overflow-hidden">
+  <Image
+    src={bgImage}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
+  />
+  <div class="absolute inset-0 bg-graphite/30"></div>
+  <Container class="relative">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-widest text-solar mb-6">{c.eyebrow}</p>
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
+        {c.heading}
+      </h1>
+      <p class="text-lg sm:text-xl text-white/85 leading-relaxed mb-10">
+        {c.body}
+      </p>
+      <Button href={getLocalizedPath(lang, '/contact')}>{c.cta}</Button>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+import SectionHeading from '../../components/ui/SectionHeading.astro';
+import ServiceArea from '../../components/services/ServiceArea.astro';
+import ProcessSteps from '../../components/services/ProcessSteps.astro';
+import CtaBanner from '../../components/home/CtaBanner.astro';
+import TranslationBadge from '../../components/ui/TranslationBadge.astro';
+import bgImage from '../../assets/stock/coworking-1.png';
+
+const services = [
+  {
+    icon: 'service-brand',
+    title: 'Brand Strategy & Modernisation',
+    subtitle: 'Positioning · Identity · Messaging',
+    body: "Most brands don't fail because of bad design — they fail because the positioning is unclear, the message is inconsistent, or the brand no longer reflects who the company has become. I help you close that gap. I develop brand positioning that is commercially grounded, competitively differentiated, and built to last — then support your team to translate it correctly into every touchpoint.",
+    bullets: [
+      "A clearly defined positioning that differentiates you in your market and gives your team a shared direction — not a tagline, but a strategic foundation.",
+      "A messaging framework aligned to your actual target audiences, so every communication — from pitch deck to product page — says the same thing, differently.",
+      "Independent agency selection and implementation oversight, so the strategy doesn't get lost between the boardroom and the brief.",
+    ],
+    tags: ['Brand Positioning', 'Value Proposition', 'Messaging Framework', 'Competitive Differentiation', 'Target Audience', 'Visual Identity Direction', 'Brand Architecture', 'Agency Oversight'],
+  },
+  {
+    icon: 'service-communication',
+    title: 'Communication & Channel Strategy',
+    subtitle: 'Messaging · Channels · Audience',
+    body: "The problem is rarely that companies aren't communicating enough — it's that they're communicating the wrong things, on the wrong channels, to audiences that aren't listening. I design communication strategies that bring discipline to your message and logic to your channel mix. My work stops before execution — which means no conflicts of interest, no media commissions, no reason to recommend anything other than what works.",
+    bullets: [
+      "A structured audience segmentation and messaging framework so each stakeholder receives a communication that speaks to their actual priorities — not a broadcast version of your homepage.",
+      "A channel strategy with clear rationale — where to invest, where to cut, and how the channels work together across the buyer journey.",
+      "A campaign architecture your internal team or agency can execute directly, without needing to reverse-engineer the thinking behind it.",
+    ],
+    tags: ['Audience Segmentation', 'Channel Mix', 'Content Framework', 'Media Planning', 'Tone of Voice', 'Campaign Architecture', 'Buyer Journey', 'Message Hierarchy'],
+  },
+  {
+    icon: 'service-data',
+    title: 'Data & AI-Enabled Marketing',
+    subtitle: 'Analytics · AI · Decision-Making',
+    body: "Most marketing teams collect more data than they use. The dashboards exist; the insights don't. I help companies turn data into decisions — by connecting what you measure to what you're actually trying to achieve. I also help teams move beyond AI as a writing tool and into AI as a genuine strategic advantage — building workflows, governance frameworks, and practical capabilities that save time and sharpen thinking.",
+    bullets: [
+      "A KPI framework and data architecture aligned to your commercial goals — so reporting stops being a ritual and starts being useful.",
+      "A clear picture of where AI can realistically improve your team's output: faster research, sharper briefings, better prospect intelligence — without the hype.",
+      "Custom AI workflows and hands-on training your team can actually use, not a theoretical roadmap that sits in a drawer.",
+    ],
+    tags: ['KPI Framework', 'Marketing Analytics', 'AI Strategy', 'Workflow Automation', 'Data Architecture', 'Performance Measurement', 'AI Training', 'Decision Intelligence'],
+  },
+  {
+    icon: 'service-b2b',
+    title: 'B2B Growth & ABM Strategy',
+    subtitle: 'ABM · Pipeline · Sales Alignment',
+    body: "When sales and marketing aren't aligned, the pipeline suffers — and everyone blames the other team. I help B2B companies build the systems that close that gap: account-based marketing strategies that target the right companies, reach the right people within them, and give sales a framework they'll actually follow. I design the strategy and support implementation — but I don't run your campaigns or replace your sales team.",
+    bullets: [
+      "A rigorously defined ICP with account tiering and buying committee mapping — so your team knows exactly who to target, why, and with what message at each stage.",
+      "A sales and marketing funnel strategy with a shared qualification logic, removing the grey zone between marketing handoff and sales follow-up.",
+      "ABM playbooks your team can run independently — with governance, tracking, and enough flexibility to adapt as you learn.",
+    ],
+    tags: ['Account-Based Marketing', 'ICP Definition', 'Buying Committee Mapping', 'Pipeline Strategy', 'Sales & Marketing Alignment', 'Lead Qualification', 'ABM Playbooks', 'Revenue Marketing'],
+  },
+];
+---
+
+<BaseLayout
+  title="Strategische Marketing-Leistungen"
+  description="Vier vernetzte Bereiche strategischen Marketings: Markenpositionierung, Kommunikationsstrategie, Daten & Analytics und B2B Sales & Marketing Alignment."
+  lang="de"
+  canonicalPath="/services"
+>
+  <section class="relative py-24 sm:py-32 overflow-hidden">
+    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" />
+    <div class="absolute inset-0 bg-graphite/55"></div>
+    <Container class="relative">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-solar mb-6">Was ich tue</p>
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-white leading-tight mb-8">
+          Strategische Marketing-Leistungen
+        </h1>
+        <p class="text-lg sm:text-xl text-white/85 leading-relaxed">
+          Ich arbeite in vier vernetzten Bereichen strategischen Marketings — jeder adressiert eine andere Dimension der Klarheit, die Marketing effektiv macht. Die meisten Zusammenarbeiten beginnen mit Positionierung und entwickeln sich von dort weiter.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-24">
+    <Container>
+      <SectionHeading eyebrow="Leistungsbereiche">
+        Wo ich mit Ihnen arbeite
+      </SectionHeading>
+      <div class="space-y-16 mt-12">
+        {services.map((service, i) => (
+          <ServiceArea {...service} />
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <ProcessSteps lang="de" />
+
+  <CtaBanner
+    lang="de"
+    heading="Bereit, das Fundament aufzubauen?"
+    body="Lassen Sie uns mit einem Gespräch beginnen über Ihre Situation und wo strategische Klarheit den größten Unterschied machen würde."
+  />
+  <TranslationBadge />
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import Container from '../ui/Container.astro';
+import Navigation from './Navigation.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import MobileMenu from './MobileMenu.astro';
+import { getLocalizedPath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  canonicalPath: string;
+}
+
+const { lang, canonicalPath } = Astro.props;
+
+const logos = import.meta.glob('/src/assets/logos/mako/logo-horizontal-dark.svg', { query: '?raw', import: 'default', eager: true });
+const logoSvg = logos['/src/assets/logos/mako/logo-horizontal-dark.svg'] as string;
+---
+
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100">
+  <Container>
+    <div class="flex items-center justify-between h-[73px]">
+      <a href={getLocalizedPath(lang, '/')} aria-label="MAKO Consult Home" class="shrink-0">
+        <span class="inline-block h-16 w-auto [&>svg]:h-16 [&>svg]:w-auto" set:html={logoSvg} />
+      </a>
+
+      <div class="flex items-center gap-6">
+        <Navigation lang={lang} canonicalPath={canonicalPath} />
+        <div class="hidden md:block">
+          <LanguageSwitcher lang={lang} canonicalPath={canonicalPath} />
+        </div>
+        <MobileMenu lang={lang} canonicalPath={canonicalPath} />
+      </div>
+    </div>
+  </Container>
+</header>
