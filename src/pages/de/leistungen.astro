@@ -9,6 +9,29 @@ import CtaBanner from '../../components/home/CtaBanner.astro';
 import TranslationBadge from '../../components/ui/TranslationBadge.astro';
 import bgImage from '../../assets/stock/coworking-1.png';
 
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "MAKOConsult",
+    "url": "https://makoconsult.com"
+  },
+  "name": "Strategische Marketing-Leistungen",
+  "description": "Vier vernetzte Bereiche strategischen Marketings: Markenpositionierung, Kommunikationsstrategie, Daten & Analytics und B2B Sales & Marketing Alignment.",
+  "areaServed": "Europe",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Strategische Marketing-Leistungen",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Strategy & Modernisation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Communication & Channel Strategy" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data & AI-Enabled Marketing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "B2B Growth & ABM Strategy" } },
+    ]
+  }
+};
+
 const services = [
   {
     icon: 'service-brand',
@@ -66,9 +89,10 @@ const services = [
   description="Vier vernetzte Bereiche strategischen Marketings: Markenpositionierung, Kommunikationsstrategie, Daten & Analytics und B2B Sales & Marketing Alignment."
   lang="de"
   canonicalPath="/services"
+  jsonLd={servicesJsonLd}
 >
   <section class="relative py-24 sm:py-32 overflow-hidden">
-    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" />
+    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 bg-graphite/55"></div>
     <Container class="relative">
       <div class="max-w-3xl">

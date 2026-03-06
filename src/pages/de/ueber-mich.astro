@@ -4,13 +4,28 @@ import CareerNarrative from '../../components/about/CareerNarrative.astro';
 import PhilosophyGrid from '../../components/about/PhilosophyGrid.astro';
 import CtaBanner from '../../components/home/CtaBanner.astro';
 import TranslationBadge from '../../components/ui/TranslationBadge.astro';
+
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Michael Makowiecki",
+    "jobTitle": "Strategischer Marketingberater",
+    "worksFor": { "@type": "Organization", "name": "MAKOConsult" },
+    "url": "https://www.linkedin.com/in/mmakowiecki/",
+    "knowsAbout": ["Markenstrategie", "B2B-Marketing", "Kommunikationsstrategie", "Marketing-Analytics", "Account-Based Marketing"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE" }
+  }
+};
 ---
 
 <BaseLayout
-  title="Über mich — Hintergrund & Ansatz"
+  title="Strategischer Marketingberater — 15+ Jahre B2B-Erfahrung"
   description="Über 15 Jahre strategische Marketingerfahrung bei globalen Marken, B2B-Tech und führenden Agenturen. Erfahren Sie mehr über den Ansatz hinter MAKO Consult."
   lang="de"
   canonicalPath="/about"
+  jsonLd={aboutJsonLd}
 >
   <CareerNarrative lang="de" />
   <PhilosophyGrid lang="de" />

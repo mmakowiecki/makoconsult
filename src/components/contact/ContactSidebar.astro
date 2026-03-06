@@ -13,7 +13,7 @@ const content = {
     basedIn: 'Based in',
     location: 'Hamburg, Germany',
     workingWith: 'Working with',
-    audience: 'European B2B companies & scale-ups',
+    audience: 'Tech scale-ups, FMCG and consumer goods companies, industrial SMEs, professional service companies, consumer and e-commerce brands, and agencies looking for a strategic partner.',
     responseTime: 'Response time',
     responseValue: 'Within 24 business hours',
     linkedin: 'LinkedIn Profile',
@@ -22,7 +22,7 @@ const content = {
     basedIn: 'Standort',
     location: 'Hamburg, Deutschland',
     workingWith: 'Zusammenarbeit mit',
-    audience: 'Europäische B2B-Unternehmen & Scale-ups',
+    audience: 'Tech-Scale-ups, FMCG- und Konsumgüterunternehmen, industrielle KMUs, Professional-Service-Unternehmen, Consumer- und E-Commerce-Marken sowie Agenturen, die einen strategischen Partner suchen.',
     responseTime: 'Antwortzeit',
     responseValue: 'Innerhalb von 24 Geschäftsstunden',
     linkedin: 'LinkedIn-Profil',
@@ -51,6 +51,7 @@ const c = content[lang];
       <p class="text-steel">{c.responseValue}</p>
     </div>
     <div class="pt-2">
+      <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-3">{lang === 'en' ? 'Connect with me' : 'Vernetzen Sie sich mit mir'}</p>
       <a
         href="https://www.linkedin.com/in/mmakowiecki/"
         target="_blank"
@@ -58,7 +59,7 @@ const c = content[lang];
         class="block hover:opacity-80 transition-opacity"
         aria-label="LinkedIn"
       >
-        <Icon name="linkedin-color" class="w-full [&>svg]:w-full [&>svg]:h-auto" />
+        <Icon name="linkedin-color" class="w-3/4 [&>svg]:w-full [&>svg]:h-auto" />
       </a>
     </div>
   </div>

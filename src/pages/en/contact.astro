@@ -6,17 +6,38 @@ import CalendlyEmbed from '../../components/contact/CalendlyEmbed.astro';
 import ContactForm from '../../components/contact/ContactForm.astro';
 import ContactSidebar from '../../components/contact/ContactSidebar.astro';
 import bgImage from '../../assets/stock/consulting-2.png';
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "mainEntity": {
+    "@type": "ProfessionalService",
+    "name": "MAKOConsult",
+    "url": "https://makoconsult.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["English", "German"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hamburg",
+      "addressCountry": "DE"
+    }
+  }
+};
 ---
 
 <BaseLayout
-  title="Contact"
+  title="Book a Free Marketing Strategy Consultation"
   description="Book a free discovery call or send a message. Let's start a conversation about where strategic marketing clarity can help your business."
   lang="en"
   canonicalPath="/contact"
+  jsonLd={contactJsonLd}
 >
   <!-- Hero -->
   <section class="relative py-24 sm:py-32 overflow-hidden">
-    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" />
+    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 bg-graphite/55"></div>
     <Container class="relative">
       <div class="max-w-3xl">

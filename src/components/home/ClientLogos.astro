@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Container from '../ui/Container.astro';
 
 import logo4flow from '../../assets/logos/clients/4flow.jpg';
-import logoBacardi from '../../assets/logos/clients/bacardi.jpeg';
+import logoBacardi from '../../assets/logos/clients/bacardi.png';
 import logoBat from '../../assets/logos/clients/bat.png';
 import logoBombay from '../../assets/logos/clients/bombay-sapphire.png';
 import logoGlo from '../../assets/logos/clients/glo.png';
@@ -12,26 +12,26 @@ import logoImperial from '../../assets/logos/clients/imperial-brands.png';
 import logoMetro from '../../assets/logos/clients/metro.png';
 import logoScholz from '../../assets/logos/clients/scholz-friends.png';
 import logoServiceplan from '../../assets/logos/clients/serviceplan.png';
-import logoTchibo from '../../assets/logos/clients/tchibo.webp';
+import logoTchibo from '../../assets/logos/clients/tchibo.png';
 import logoVodafone from '../../assets/logos/clients/vodafone.png';
-import logoWeischer from '../../assets/logos/clients/weischer.jpg';
+import logoWeischer from '../../assets/logos/clients/weischer.png';
 import logoVorwerk from '../../assets/logos/clients/vorwerk.svg';
 
 const clients = [
   { name: '4flow', src: logo4flow },
   { name: 'Bacardi', src: logoBacardi },
   { name: 'BAT', src: logoBat },
-  { name: 'Bombay Sapphire', src: logoBombay },
+  { name: 'Bombay Sapphire', src: logoBombay, class: 'h-8 sm:h-10' },
   { name: 'glo', src: logoGlo },
-  { name: 'Grey Goose', src: logoGreyGoose },
+  { name: 'Grey Goose', src: logoGreyGoose, class: 'h-12 sm:h-14' },
   { name: 'Imperial Brands', src: logoImperial },
   { name: 'METRO', src: logoMetro },
   { name: 'Scholz & Friends', src: logoScholz },
-  { name: 'Serviceplan', src: logoServiceplan },
+  { name: 'Serviceplan', src: logoServiceplan, class: 'h-10 sm:h-12' },
   { name: 'Tchibo', src: logoTchibo },
   { name: 'Vodafone', src: logoVodafone },
   { name: 'Vorwerk', src: logoVorwerk },
-  { name: 'Weischer', src: logoWeischer },
+  { name: 'Weischer', src: logoWeischer, class: 'h-6 sm:h-8' },
 ];
 ---
 
@@ -41,11 +41,12 @@ const clients = [
   </Container>
   <div class="overflow-hidden">
     <div class="logo-scroll flex items-center gap-16 w-max">
-      {[...clients, ...clients].map(({ name, src }) => (
-        typeof src === 'string'
-          ? <img src={src} alt={name} class="h-8 sm:h-10 w-auto shrink-0 object-contain grayscale opacity-60" />
-          : <Image src={src} alt={name} height={40} class="h-8 sm:h-10 w-auto shrink-0 object-contain grayscale opacity-60" />
-      ))}
+      {[...clients, ...clients].map(({ name, src, class: customClass }) => {
+        const cls = `${customClass || 'h-8 sm:h-10'} w-auto shrink-0 object-contain grayscale opacity-60`;
+        return typeof src === 'string'
+          ? <img src={src} alt={name} class={cls} />
+          : <Image src={src} alt={name} height={56} class={cls} />
+      })}
     </div>
   </div>
 </section>

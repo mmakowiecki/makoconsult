@@ -3,13 +3,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CareerNarrative from '../../components/about/CareerNarrative.astro';
 import PhilosophyGrid from '../../components/about/PhilosophyGrid.astro';
 import CtaBanner from '../../components/home/CtaBanner.astro';
+
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Michael Makowiecki",
+    "jobTitle": "Strategic Marketing Consultant",
+    "worksFor": { "@type": "Organization", "name": "MAKOConsult" },
+    "url": "https://www.linkedin.com/in/mmakowiecki/",
+    "knowsAbout": ["Brand Strategy", "B2B Marketing", "Communication Strategy", "Marketing Analytics", "Account-Based Marketing"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE" }
+  }
+};
 ---
 
 <BaseLayout
-  title="About — Background & Approach"
+  title="Strategic Marketing Consultant — 15+ Years B2B Experience"
   description="15+ years of strategic marketing experience across global brands, B2B tech, and leading agencies. Learn about the approach behind MAKO Consult."
   lang="en"
   canonicalPath="/about"
+  jsonLd={aboutJsonLd}
 >
   <CareerNarrative lang="en" />
   <PhilosophyGrid lang="en" />

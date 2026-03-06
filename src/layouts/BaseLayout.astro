@@ -10,12 +10,40 @@ interface Props {
   description: string;
   lang: Lang;
   canonicalPath: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, lang, canonicalPath } = Astro.props;
+const { title, description, lang, canonicalPath, jsonLd } = Astro.props;
 const altLang = getAlternateLang(lang);
 const canonicalUrl = `https://makoconsult.com${getLocalizedPath(lang, canonicalPath)}`;
 const alternateUrl = `https://makoconsult.com${getLocalizedPath(altLang, canonicalPath)}`;
+
+const defaultJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "MAKOConsult",
+  "url": "https://makoconsult.com",
+  "logo": "https://makoconsult.com/favicon.svg",
+  "description": lang === 'en'
+    ? "Strategic marketing consultancy helping B2B companies build positioning, communication strategy, data-driven marketing, and sales-marketing alignment."
+    : "Strategische Marketingberatung für B2B-Unternehmen — Positionierung, Kommunikationsstrategie, datengetriebenes Marketing und Sales-Marketing-Alignment.",
+  "founder": {
+    "@type": "Person",
+    "name": "Michael Makowiecki",
+    "jobTitle": lang === 'en' ? "Strategic Marketing Consultant" : "Strategischer Marketingberater",
+    "url": "https://www.linkedin.com/in/mmakowiecki/"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Hamburg",
+    "addressCountry": "DE"
+  },
+  "areaServed": "Europe",
+  "knowsLanguage": ["en", "de"],
+  "sameAs": ["https://www.linkedin.com/in/mmakowiecki/"]
+};
+
+const pageJsonLd = jsonLd || defaultJsonLd;
 ---
 
 <!doctype html>
@@ -39,13 +67,29 @@ const alternateUrl = `https://makoconsult.com${getLocalizedPath(altLang, canonic
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'de_DE'} />
 
-    <!-- Google Fonts: Montserrat -->
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(pageJsonLd)} />
+
+    <!-- Google Fonts: Montserrat (non-render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
   <body class="min-h-screen flex flex-col">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-ember focus:rounded">

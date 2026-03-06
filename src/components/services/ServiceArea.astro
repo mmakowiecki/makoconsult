@@ -24,8 +24,14 @@ const hasExpandable = bullets.length > 0 || tags.length > 0;
     {subtitle && <p class="text-white/60 text-sm font-medium mb-4">{subtitle}</p>}
     <p class="text-white/80 leading-relaxed text-lg">{body}</p>
     {hasExpandable && (
-      <>
-        <div class="service-expandable hidden mt-4">
+      <details class="service-details mt-4">
+        <summary class="mt-6 bg-white/15 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-solar hover:text-graphite transition-all duration-200 inline-flex items-center gap-2 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+          <span class="toggle-label">More</span>
+          <svg class="w-4 h-4 transition-transform toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="mt-4">
           {bullets.length > 0 && (
             <ul class="space-y-3 mb-6">
               {bullets.map((bullet) => (
@@ -46,29 +52,22 @@ const hasExpandable = bullets.length > 0 || tags.length > 0;
             </div>
           )}
         </div>
-        <button class="service-toggle mt-6 bg-white/15 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-solar hover:text-graphite transition-all duration-200 inline-flex items-center gap-2">
-          <span class="toggle-label">More</span>
-          <svg class="w-4 h-4 transition-transform toggle-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-      </>
+      </details>
     )}
   </div>
 </div>
 
-<script is:inline>
-  if (!window.__serviceToggleInit) {
-    window.__serviceToggleInit = true;
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.service-toggle');
-      if (!btn) return;
-      const area = btn.closest('.service-area');
-      const content = area.querySelector('.service-expandable');
-      if (!content) return;
-      const isHidden = content.classList.toggle('hidden');
-      btn.querySelector('.toggle-label').textContent = isHidden ? 'More' : 'Less';
-      btn.querySelector('.toggle-arrow').style.transform = isHidden ? '' : 'rotate(180deg)';
-    });
+<style>
+  .service-details[open] .toggle-label {
+    display: none;
   }
-</script>
+  .service-details[open] summary::before {
+    content: 'Less';
+  }
+  .service-details[open] .toggle-arrow {
+    transform: rotate(180deg);
+  }
+  .service-details summary {
+    user-select: none;
+  }
+</style>

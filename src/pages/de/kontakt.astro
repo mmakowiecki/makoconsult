@@ -7,16 +7,37 @@ import ContactForm from '../../components/contact/ContactForm.astro';
 import ContactSidebar from '../../components/contact/ContactSidebar.astro';
 import TranslationBadge from '../../components/ui/TranslationBadge.astro';
 import bgImage from '../../assets/stock/consulting-2.png';
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "mainEntity": {
+    "@type": "ProfessionalService",
+    "name": "MAKOConsult",
+    "url": "https://makoconsult.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["Englisch", "Deutsch"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hamburg",
+      "addressCountry": "DE"
+    }
+  }
+};
 ---
 
 <BaseLayout
-  title="Kontakt"
+  title="Kostenlose Strategieberatung buchen"
   description="Buchen Sie ein kostenloses Erstgespräch oder senden Sie eine Nachricht. Lassen Sie uns über strategische Marketing-Klarheit für Ihr Unternehmen sprechen."
   lang="de"
   canonicalPath="/contact"
+  jsonLd={contactJsonLd}
 >
   <section class="relative py-24 sm:py-32 overflow-hidden">
-    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" />
+    <Image src={bgImage} alt="" class="absolute inset-0 w-full h-full object-cover" widths={[768, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
     <div class="absolute inset-0 bg-graphite/55"></div>
     <Container class="relative">
       <div class="max-w-3xl">
