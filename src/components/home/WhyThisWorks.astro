@@ -1,0 +1,77 @@
+---
+import Container from '../ui/Container.astro';
+import SectionHeading from '../ui/SectionHeading.astro';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  en: {
+    eyebrow: 'Why This Works',
+    heading: 'Experience That Translates to Results',
+    benefits: [
+      {
+        title: 'I understand both sides of the table',
+        body: '15+ years spanning global corporate brand management (Imperial Brands, Bacardi) and leading strategic agencies (Serviceplan, Scholz & Friends). I\'ve seen how companies make decisions from the inside (their structures, politics, and constraints) and I know how strategies actually get executed. That dual perspective means I build strategies that work in boardrooms and survive implementation.',
+      },
+      {
+        title: 'Global experience, rapid adaptation',
+        body: "I've built marketing strategies across Bristol, Phnom Penh, Hamburg, and Abidjan. I already understand diverse markets across Europe, Asia, and Africa, but more importantly, I've proven I can quickly adapt to completely new situations and market dynamics. That combination makes me effective whether you're in a familiar market or breaking into something entirely new.",
+      },
+      {
+        title: 'Faster, leaner, more efficient',
+        body: 'I use the most modern technological solutions to deliver better results. AI-enabled research, automated workflows, and advanced analytics mean I work faster and more efficiently than traditional consultants. You get sharper insights and quicker turnaround without paying for inflated timelines or bloated teams.',
+      },
+      {
+        title: 'Trained to work with complexity and data',
+        body: 'My background in natural sciences trained me to structure complexity, identify patterns, and draw evidence-based conclusions. I work with complex data to identify what actually matters, make projections, calculate ROI, and turn analysis into actionable strategy. Not gut feeling dressed up as insights.',
+      },
+    ],
+  },
+  de: {
+    eyebrow: 'Warum das funktioniert',
+    heading: 'Erfahrung, die sich in Ergebnissen niederschlägt',
+    benefits: [
+      {
+        title: 'Ich verstehe beide Seiten des Tisches',
+        body: '15+ Jahre, die globales Corporate Brand Management (Imperial Brands, Bacardi) und führende Strategieagenturen (Serviceplan, Scholz & Friends) umspannen. Ich habe gesehen, wie Unternehmen Entscheidungen von innen treffen (ihre Strukturen, Politik und Einschränkungen) und weiß, wie Strategien tatsächlich umgesetzt werden. Diese duale Perspektive bedeutet, dass ich Strategien entwickle, die im Vorstand funktionieren und die Umsetzung überstehen.',
+      },
+      {
+        title: 'Globale Erfahrung, schnelle Anpassung',
+        body: 'Ich habe Marketingstrategien in Bristol, Phnom Penh, Hamburg und Abidjan entwickelt. Ich verstehe bereits diverse Märkte in Europa, Asien und Afrika, aber noch wichtiger: Ich habe bewiesen, dass ich mich schnell an völlig neue Situationen und Marktdynamiken anpassen kann. Diese Kombination macht mich effektiv, ob Sie sich in einem vertrauten Markt befinden oder in etwas völlig Neues einsteigen.',
+      },
+      {
+        title: 'Schneller, schlanker, effizienter',
+        body: 'Ich nutze die modernsten technologischen Lösungen für bessere Ergebnisse. KI-gestützte Recherche, automatisierte Workflows und fortschrittliche Analysen bedeuten, dass ich schneller und effizienter arbeite als traditionelle Berater. Sie erhalten schärfere Erkenntnisse und schnellere Ergebnisse, ohne für aufgeblähte Zeitpläne oder große Teams zu bezahlen.',
+      },
+      {
+        title: 'Ausgebildet für Komplexität und Daten',
+        body: 'Mein naturwissenschaftlicher Hintergrund hat mich trainiert, Komplexität zu strukturieren, Muster zu erkennen und evidenzbasierte Schlussfolgerungen zu ziehen. Ich arbeite mit komplexen Daten, um herauszufinden, was wirklich zählt, Prognosen zu erstellen, ROI zu berechnen und Analysen in umsetzbare Strategie umzuwandeln. Kein Bauchgefühl, das als Erkenntnis verkleidet ist.',
+      },
+    ],
+  },
+};
+
+const c = content[lang];
+---
+
+<section class="py-20 sm:py-24 bg-warm-white">
+  <Container>
+    <SectionHeading eyebrow={c.eyebrow}>
+      {c.heading}
+    </SectionHeading>
+
+    <div class="grid sm:grid-cols-2 gap-8 mt-12">
+      {c.benefits.map((benefit) => (
+        <div class="bg-white rounded-sm p-8 border border-gray-100">
+          <h3 class="font-heading text-lg font-bold text-graphite mb-3">{benefit.title}</h3>
+          <p class="text-steel leading-relaxed">{benefit.body}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

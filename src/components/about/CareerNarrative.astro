@@ -12,19 +12,22 @@ const { lang } = Astro.props;
 
 const content = {
   en: {
-    eyebrow: 'About MAKO Consult',
-    heading: 'Strategic Marketing Consultant',
+    eyebrow: 'About',
+    heading: 'Michael Makowiecki',
+    subtitle: 'Strategic Marketing Consultant & Founder, MAKO Consult',
     paragraphs: [
-      "I've spent fifteen years building marketing strategies across global brands and leading agencies. Five years at Imperial Brands in Bristol, working on global brand strategy for international FMCG markets. Brand and communications at Bacardi. Strategic marketing at 4flow, developing growth strategies for B2B logistics and supply chain solutions. Agency experience at Serviceplan, Scholz & Friends, and Weischer Media — from brand positioning and communication strategy to media strategy development and execution.",
-      "This path gave me dual perspective: how companies make strategic decisions internally, and how those strategies translate into execution. I've developed brand positioning and messaging frameworks, built communication and media strategies, worked across B2B and B2C contexts. Projects from Bristol to Phnom Penh to Abidjan — repositioning consumer brands in Southeast Asian markets, developing B2B growth systems in Germany, building strategies across industries and cultural contexts.",
-      "What drives my work is curiosity about how businesses actually operate. I'm passionate about understanding the specific market dynamics that shape each situation — diving deep into research, exploring unfamiliar territories, learning what makes a context unique. My scientific background taught me to structure complexity and analyze data rigorously, which shapes how I approach every project.",
-      "I challenge assumptions not to be contrarian, but because comfortable thinking rarely leads to the best solutions. I look for new paths grounded in evidence and built through understanding — strategies that fit real constraints, not theoretical ideals.",
+      "I'm a strategic marketing consultant with over 15 years of experience building and leading marketing functions across B2B tech, SaaS, FMCG, and professional services. I've worked in global corporations, advertising agencies, and scale-up environments (from Bristol to Phnom Penh to Hamburg), and I've seen how marketing works (and doesn't work) from every angle.",
+      "I founded MAKO Consult because I kept seeing the same pattern: companies have talented teams, active campaigns, and plenty of marketing activity — but the strategic foundation connecting it all is often unclear. Not absent, just not explicit enough to guide decisions. That's the gap I help close.",
+      "I've worked with international FMCG brands at Imperial Brands, led strategic consulting for agencies like Serviceplan and Scholz & Friends, and built marketing systems for B2B tech companies like 4flow. That combination (corporate brand management, agency strategy, and hands-on B2B execution) gives me perspective most consultants don't have. I understand how companies make decisions internally and how those strategies actually get executed in practice.",
+      "Examples: I repositioned an FMCG brand entering new markets by developing positioning frameworks their local teams could adapt without losing brand coherence. I've also helped advertising agencies develop AI implementation plans for their workflows and delivered hands-on training to get teams actually using the technology.",
+      "I challenge assumptions not to be contrarian, but because comfortable thinking rarely leads to the best solutions. I look for new paths grounded in evidence and built through understanding. Strategies that fit real constraints, not theoretical ideals.",
       "That's what MAKO Consult brings: strategic clarity built specifically for your business context, through a combination of experience, analytical rigor, and genuine curiosity about how to make it work.",
     ],
   },
   de: {
-    eyebrow: 'Über MAKO Consult',
-    heading: 'Strategischer Marketingberater',
+    eyebrow: 'Über mich',
+    heading: 'Michael Makowiecki',
+    subtitle: 'Strategischer Marketingberater & Gründer, MAKO Consult',
     paragraphs: [
       "Ich habe fünfzehn Jahre damit verbracht, Marketingstrategien für globale Marken und führende Agenturen zu entwickeln. Fünf Jahre bei Imperial Brands in Bristol, an globaler Markenstrategie für internationale FMCG-Märkte arbeitend. Marke und Kommunikation bei Bacardi. Strategisches Marketing bei 4flow, Entwicklung von Wachstumsstrategien für B2B-Logistik- und Supply-Chain-Lösungen. Agenturerfahrung bei Serviceplan, Scholz & Friends und Weischer Media — von Markenpositionierung und Kommunikationsstrategie bis hin zur Medienstrategieentwicklung und -umsetzung.",
       "Dieser Weg gab mir eine duale Perspektive: wie Unternehmen intern strategische Entscheidungen treffen und wie diese Strategien in die Umsetzung übersetzt werden. Ich habe Markenpositionierungen und Messaging-Frameworks entwickelt, Kommunikations- und Medienstrategien aufgebaut, in B2B- und B2C-Kontexten gearbeitet. Projekte von Bristol über Phnom Penh bis Abidjan — Neupositionierung von Konsummarken in südostasiatischen Märkten, Entwicklung von B2B-Wachstumssystemen in Deutschland, Aufbau von Strategien über Branchen und kulturelle Kontexte hinweg.",
@@ -52,7 +55,8 @@ const c = content[lang];
       </div>
       <div>
         <p class="text-sm font-semibold uppercase tracking-widest text-ember mb-4">{c.eyebrow}</p>
-        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-graphite mb-10">{c.heading}</h1>
+        <h1 class="font-heading text-4xl sm:text-5xl font-bold text-graphite mb-2">{c.heading}</h1>
+        <p class="text-lg text-steel mb-10">{c.subtitle}</p>
         <blockquote class="border-l-4 border-ember pl-5 mb-10 italic text-graphite text-lg leading-relaxed">
           "Clarity beats complexity. Strategy beats tactics. Understanding beats assumptions. That's what I build."
         </blockquote>

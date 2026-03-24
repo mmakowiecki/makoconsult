@@ -2,14 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/home/Hero.astro';
 import ServiceCards from '../../components/home/ServiceCards.astro';
-import AboutSnippet from '../../components/home/AboutSnippet.astro';
+import HowIWork from '../../components/home/HowIWork.astro';
 import ClientLogos from '../../components/home/ClientLogos.astro';
+import AboutSnippet from '../../components/home/AboutSnippet.astro';
+import WhyThisWorks from '../../components/home/WhyThisWorks.astro';
 import CtaBanner from '../../components/home/CtaBanner.astro';
 ---
 
 <BaseLayout
   title="Strategic Marketing Consultancy"
-  description="MAKO Consult helps B2B companies build strategic marketing foundations — positioning, communication strategy, data & analytics, and sales-marketing alignment."
+  description="From scattered marketing activities to strategic direction that your team can execute. Discovery-first consulting for B2B companies navigating complexity."
   lang="en"
   canonicalPath="/"
 >
@@ -17,5 +19,7 @@ import CtaBanner from '../../components/home/CtaBanner.astro';
   <ServiceCards lang="en" />
   <ClientLogos />
   <AboutSnippet lang="en" />
+  <WhyThisWorks lang="en" />
+  <HowIWork lang="en" />
   <CtaBanner lang="en" />
 </BaseLayout>

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CareerNarrative from '../../components/about/CareerNarrative.astro';
-import PhilosophyGrid from '../../components/about/PhilosophyGrid.astro';
 import CtaBanner from '../../components/home/CtaBanner.astro';
 
 const aboutJsonLd = {
@@ -20,17 +19,16 @@ const aboutJsonLd = {
 ---
 
 <BaseLayout
-  title="Strategic Marketing Consultant — 15+ Years B2B Experience"
-  description="15+ years of strategic marketing experience across global brands, B2B tech, and leading agencies. Learn about the approach behind MAKO Consult."
+  title="About Michael Makowiecki"
+  description="Strategic marketing consultant with 15+ years across global brands, agencies, and markets. Helping B2B companies build marketing clarity through discovery-first consulting."
   lang="en"
   canonicalPath="/about"
   jsonLd={aboutJsonLd}
 >
   <CareerNarrative lang="en" />
-  <PhilosophyGrid lang="en" />
   <CtaBanner
     lang="en"
     heading="Let's Talk About Your Challenges"
-    body="Ready to build strategic clarity for your marketing? Start with a free consultation to discuss your situation and explore how strategic foundation can help."
+    body="Ready to build strategic clarity for your marketing? Start with a conversation to discuss your situation and explore how a strategic foundation can help."
   />
 </BaseLayout>
