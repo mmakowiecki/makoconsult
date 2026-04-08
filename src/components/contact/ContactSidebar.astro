@@ -13,9 +13,8 @@ const content = {
     basedIn: 'Based in',
     location: 'Hamburg, Germany',
     workingWith: 'Working with',
-    audience: 'B2B companies in tech, FMCG, industrial, and professional services — typically 25-250 employees navigating complexity in positioning, growth, or modernization — plus agencies looking for a strategic partner.',
-    responseTime: 'Response time',
-    responseValue: 'Within 24 business hours',
+    audience: 'Companies in tech, FMCG, industrial, and professional services - navigating complexity in positioning, growth, or modernization, and agencies looking for a strategic partner.',
+    email: 'Email',
     linkedin: 'LinkedIn Profile',
   },
   de: {
@@ -23,8 +22,7 @@ const content = {
     location: 'Hamburg, Deutschland',
     workingWith: 'Zusammenarbeit mit',
     audience: 'Tech-Scale-ups, FMCG- und Konsumgüterunternehmen, industrielle KMUs, Professional-Service-Unternehmen, Consumer- und E-Commerce-Marken sowie Agenturen, die einen strategischen Partner suchen.',
-    responseTime: 'Antwortzeit',
-    responseValue: 'Innerhalb von 24 Geschäftsstunden',
+    email: 'E-Mail',
     linkedin: 'LinkedIn-Profil',
   },
 };
@@ -47,8 +45,8 @@ const c = content[lang];
       <p class="text-steel">{c.audience}</p>
     </div>
     <div>
-      <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-1">{c.responseTime}</p>
-      <p class="text-steel">{c.responseValue}</p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-1">{c.email}</p>
+      <a href="mailto:info@makoconsult.de" class="text-steel hover:text-ember transition-colors">info@makoconsult.de</a>
     </div>
     <div class="pt-2">
       <p class="text-xs font-semibold uppercase tracking-widest text-ember mb-3">{lang === 'en' ? 'Connect with me' : 'Vernetzen Sie sich mit mir'}</p>
