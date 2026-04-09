@@ -1,6 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import Container from '../ui/Container.astro';
+import type { Lang } from '../../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
 
 import logo4flow from '../../assets/logos/clients/4flow.jpg';
 import logoBacardi from '../../assets/logos/clients/bacardi.png';
@@ -37,7 +43,7 @@ const clients = [
 
 <section class="py-16 border-y border-gray-100">
   <Container>
-    <p class="text-sm font-semibold uppercase tracking-widest text-ember mb-8 text-center">Experience with</p>
+    <p class="text-sm font-semibold uppercase tracking-widest text-ember mb-8 text-center">{lang === 'de' ? 'Erfahrung mit' : 'Experience with'}</p>
   </Container>
   <div class="overflow-hidden">
     <div class="logo-scroll flex items-center gap-16 w-max">

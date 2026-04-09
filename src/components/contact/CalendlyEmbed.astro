@@ -13,8 +13,8 @@ const content = {
     body: 'A 30-minute conversation to understand your situation and explore how I can help. No commitment, no pressure.',
   },
   de: {
-    heading: 'Kostenloses Kennenlerngespräch buchen',
-    body: 'Ein 30-minütiges Gespräch, um Ihre Situation zu verstehen und zu erkunden, wie ich helfen kann. Keine Verpflichtung, kein Druck.',
+    heading: 'Gespräch vereinbaren',
+    body: 'Ein 30-minütiges Gespräch, um Ihre Situation zu verstehen und gemeinsam zu erkunden, wie ich helfen kann. Unverbindlich.',
   },
 };
 
@@ -49,17 +49,17 @@ const c = content[lang];
         }
         p(cal, ar);
       };
-    })(window, "https://cal.eu/embed.js", "init");
+    })(window, "https://cal.com/embed.js", "init");
 
-    Cal("init", "30min", { origin: "https://cal.eu" });
+    Cal("init", "30-min-meeting", { origin: "https://cal.com" });
 
-    Cal.ns["30min"]("inline", {
+    Cal.ns["30-min-meeting"]("inline", {
       elementOrSelector: "#cal-inline",
       config: { layout: "month_view" },
-      calLink: "makoconsult/30min",
+      calLink: "michael-makowiecki-aapmgc/30-min-meeting",
     });
 
-    Cal.ns["30min"]("ui", {
+    Cal.ns["30-min-meeting"]("ui", {
       hideEventTypeDetails: false,
       layout: "month_view",
     });

@@ -15,6 +15,7 @@ const content = {
     eyebrow: 'About',
     heading: 'Michael Makowiecki',
     subtitle: 'Strategic Marketing Consultant & Founder, MAKO Consult',
+    quote: '"Clarity beats complexity. Strategy beats tactics. Understanding beats assumptions. That\'s what I build."',
     paragraphs: [
       "I'm a strategic marketing consultant with over 15 years of experience building and leading marketing functions across B2B tech, SaaS, FMCG, and professional services. I've worked in global corporations, advertising agencies, and scale-up environments (from Bristol to Phnom Penh to Hamburg), and I've seen how marketing works (and doesn't work) from every angle.",
       "I founded MAKO Consult because I kept seeing the same pattern: companies have talented teams, active campaigns, and plenty of marketing activity — but the strategic foundation connecting it all is often unclear. Not absent, just not explicit enough to guide decisions. That's the gap I help close.",
@@ -28,12 +29,13 @@ const content = {
     eyebrow: 'Über mich',
     heading: 'Michael Makowiecki',
     subtitle: 'Strategischer Marketingberater & Gründer, MAKO Consult',
+    quote: '„Klarheit vor Komplexität. Strategie vor Taktik. Verstehen vor Annahmen. Das ist es, wofür ich stehe."',
     paragraphs: [
-      "Ich habe fünfzehn Jahre damit verbracht, Marketingstrategien für globale Marken und führende Agenturen zu entwickeln. Fünf Jahre bei Imperial Brands in Bristol, an globaler Markenstrategie für internationale FMCG-Märkte arbeitend. Marke und Kommunikation bei Bacardi. Strategisches Marketing bei 4flow, Entwicklung von Wachstumsstrategien für B2B-Logistik- und Supply-Chain-Lösungen. Agenturerfahrung bei Serviceplan, Scholz & Friends und Weischer Media — von Markenpositionierung und Kommunikationsstrategie bis hin zur Medienstrategieentwicklung und -umsetzung.",
-      "Dieser Weg gab mir eine duale Perspektive: wie Unternehmen intern strategische Entscheidungen treffen und wie diese Strategien in die Umsetzung übersetzt werden. Ich habe Markenpositionierungen und Messaging-Frameworks entwickelt, Kommunikations- und Medienstrategien aufgebaut, in B2B- und B2C-Kontexten gearbeitet. Projekte von Bristol über Phnom Penh bis Abidjan — Neupositionierung von Konsummarken in südostasiatischen Märkten, Entwicklung von B2B-Wachstumssystemen in Deutschland, Aufbau von Strategien über Branchen und kulturelle Kontexte hinweg.",
-      "Was meine Arbeit antreibt, ist Neugier darauf, wie Unternehmen tatsächlich funktionieren. Es ist mir wichtig, die spezifischen Marktdynamiken zu verstehen, die jede Situation prägen — tief in die Recherche eintauchen, unbekannte Gebiete erkunden, lernen, was einen Kontext einzigartig macht. Mein wissenschaftlicher Hintergrund hat mich gelehrt, Komplexität zu strukturieren und Daten rigoros zu analysieren, was meinen Ansatz für jedes Projekt prägt.",
-      "Ich hinterfrage Annahmen nicht um des Widerspruchs willen, sondern weil bequemes Denken selten zu den besten Lösungen führt. Ich suche nach neuen Wegen, die auf Evidenz basieren und durch Verständnis aufgebaut sind — Strategien, die zu realen Rahmenbedingungen passen, nicht zu theoretischen Idealen.",
-      "Das ist es, was MAKO Consult mitbringt: strategische Klarheit, speziell für Ihren Geschäftskontext aufgebaut, durch eine Kombination aus Erfahrung, analytischer Strenge und echter Neugier, wie man es zum Funktionieren bringt.",
+      "Fünfzehn Jahre im strategischen Marketing: bei globalen Konzernen und führenden Agenturen. Fünf Jahre bei Imperial Brands in Bristol, mit Fokus auf globale Markenstrategie in internationalen FMCG-Märkten. Führung der Marken Bombay Sapphire und Grey Goose in der DACH-Region bei Bacardi. Strategisches Marketing bei 4flow, mit Wachstumsstrategien für B2B-Logistik- und Supply-Chain-Lösungen. Agenturerfahrung bei Serviceplan, Scholz & Friends und Weischer Media: von Markenpositionierung und Kommunikationsstrategie bis zur Medienplanung und -umsetzung.",
+      "Diese Laufbahn gab mir eine doppelte Perspektive. Ich kenne, wie Unternehmen intern strategische Entscheidungen treffen: Strukturen, Sachzwänge, politische Realitäten. Und ich weiß, wie diese Strategien in die Umsetzung gelangen. Ich habe Markenpositionierungen und Messaging-Frameworks entwickelt, Kommunikations- und Medienstrategien aufgebaut, in B2B- wie B2C-Kontexten gearbeitet. Projekte von Bristol über Phnom Penh bis Abidjan: Neupositionierung von Konsummarken in südostasiatischen Märkten, Entwicklung von B2B-Wachstumssystemen in Deutschland, Strategien über Branchen und kulturelle Kontexte hinweg.",
+      "Was meine Arbeit antreibt, ist echte Neugier: wie Unternehmen funktionieren, welche Marktdynamiken eine Situation prägen, was einen Kontext einzigartig macht. Mein naturwissenschaftlicher Hintergrund hat mich gelehrt, Komplexität zu strukturieren und Daten rigoros zu analysieren. Das prägt meinen Ansatz bei jedem Projekt.",
+      "Ich hinterfrage Annahmen nicht um des Widerspruchs willen, sondern weil bequemes Denken selten zu den besten Lösungen führt. Ich suche nach Wegen, die auf Evidenz basieren und durch Verstehen entstehen. Strategien, die zu realen Rahmenbedingungen passen, nicht zu theoretischen Idealen.",
+      "Das ist es, was MAKO Consult mitbringt: strategische Klarheit, die spezifisch für Ihren Unternehmenskontext entwickelt wurde, durch die Kombination aus Erfahrung, analytischer Strenge und echter Neugier daran, wie es wirklich funktioniert.",
     ],
   },
 };
@@ -58,7 +60,7 @@ const c = content[lang];
         <h1 class="font-heading text-4xl sm:text-5xl font-bold text-graphite mb-2">{c.heading}</h1>
         <p class="text-lg text-steel mb-10">{c.subtitle}</p>
         <blockquote class="border-l-4 border-ember pl-5 mb-10 italic text-graphite text-lg leading-relaxed">
-          "Clarity beats complexity. Strategy beats tactics. Understanding beats assumptions. That's what I build."
+          {c.quote}
         </blockquote>
         <div class="space-y-6">
           {c.paragraphs.map((p) => (

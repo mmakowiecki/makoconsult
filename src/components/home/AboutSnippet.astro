@@ -16,6 +16,7 @@ const content = {
   en: {
     eyebrow: 'About',
     heading: 'Strategy first. Always.',
+    quote: '"Good strategy makes the direction clear, the priorities obvious, and the hard decisions easier."',
     body: "I'm Michael Makowiecki, a strategic marketing consultant with 15+ years building and leading marketing functions across B2B tech, SaaS, and professional services. I founded MAKO Consult to work directly with companies that need strategic clarity, not just more marketing activity.",
     body2: "My approach starts with understanding your situation: market, customers, internal dynamics. Then I recommend what actually fits. Strategy that fits your context is strategy that works.",
     link: 'Learn More About Me',
@@ -23,8 +24,9 @@ const content = {
   de: {
     eyebrow: 'Über mich',
     heading: 'Strategie zuerst. Immer.',
-    body: 'Ich bin Michael Makowiecki — strategischer Marketingberater mit über 15 Jahren Erfahrung im Aufbau und der Leitung von Marketingfunktionen in B2B-Tech, SaaS und Professional Services. Ich habe MAKO Consult gegründet, um direkt mit Unternehmen zu arbeiten, die strategische Klarheit brauchen, nicht nur mehr Marketingaktivität.',
-    body2: 'Mein Ansatz beginnt mit dem Verstehen Ihrer Situation — Markt, Kunden, interne Dynamiken — bevor ich irgendetwas empfehle. Strategie, die zu Ihrem Kontext passt, ist Strategie, die funktioniert.',
+    quote: '„Gute Strategie gibt die Richtung vor, macht Prioritäten klar und schwierige Entscheidungen leichter."',
+    body: 'Ich bin Michael Makowiecki, strategischer Marketingberater mit über 15 Jahren Erfahrung im Aufbau und der Führung von Marketingfunktionen in B2B-Tech, SaaS, FMCG und Professional Services. MAKO Consult habe ich gegründet, um direkt mit Unternehmen zu arbeiten, die strategische Klarheit brauchen, nicht mehr Marketingaktivität.',
+    body2: 'Mein Ansatz beginnt mit dem Verstehen Ihrer Situation: Markt, Kunden, interne Dynamiken. Auf Basis von diesem Verständnis entwickle ich Strategien, die maßgeschneidert sind. Keine pauschalen Lösungen.',
     link: 'Mehr über mich erfahren',
   },
 };
@@ -49,7 +51,7 @@ const c = content[lang];
           {c.heading}
         </SectionHeading>
         <blockquote class="border-l-4 border-ember pl-5 mb-8 italic text-graphite text-lg leading-relaxed">
-          "Good strategy makes the direction clear, the priorities obvious, and the hard decisions easier."
+          {c.quote}
         </blockquote>
         <p class="text-steel leading-relaxed mb-4">{c.body}</p>
         <p class="text-steel leading-relaxed mb-8">{c.body2}</p>

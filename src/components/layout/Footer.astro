@@ -35,7 +35,11 @@ const legalItems = [
       <!-- Logo & tagline -->
       <div>
         <span class="block w-48 [&>svg]:w-full [&>svg]:h-auto mb-4" set:html={logoSvg} />
-        <p class="text-sm text-gray-400 leading-relaxed">Strategic marketing consultancy based in Hamburg. Helping companies find clarity on positioning, messaging, and growth — strategy built from understanding first.</p>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          {lang === 'de'
+            ? 'Strategische Marketingberatung in Hamburg. Positionierung, Botschaften, Wachstum. Strategie, die auf echtem Verstehen basiert.'
+            : 'Strategic marketing consultancy based in Hamburg. Helping companies find clarity on positioning, messaging, and growth.\u200AStrategy built from understanding first.'}
+        </p>
       </div>
 
       <!-- Navigation -->
