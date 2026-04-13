@@ -16,15 +16,15 @@ interface Props {
 
 const { title, description, lang, canonicalPath, jsonLd } = Astro.props;
 const altLang = getAlternateLang(lang);
-const canonicalUrl = `https://makoconsult.com${getLocalizedPath(lang, canonicalPath)}`;
-const alternateUrl = `https://makoconsult.com${getLocalizedPath(altLang, canonicalPath)}`;
+const canonicalUrl = `https://makoconsult.de${getLocalizedPath(lang, canonicalPath)}`;
+const alternateUrl = `https://makoconsult.de${getLocalizedPath(altLang, canonicalPath)}`;
 
 const defaultJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "MAKOConsult",
-  "url": "https://makoconsult.com",
-  "logo": "https://makoconsult.com/favicon.svg",
+  "url": "https://makoconsult.de",
+  "logo": "https://makoconsult.de/favicon.svg",
   "description": lang === 'en'
     ? "Strategic marketing consultancy helping B2B companies build positioning, communication strategy, data-driven marketing, and sales-marketing alignment."
     : "Strategische Marketingberatung für B2B-Unternehmen — Positionierung, Kommunikationsstrategie, datengetriebenes Marketing und Sales-Marketing-Alignment.",
@@ -59,7 +59,7 @@ const pageJsonLd = jsonLd || defaultJsonLd;
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang={lang} href={canonicalUrl} />
     <link rel="alternate" hreflang={altLang} href={alternateUrl} />
-    <link rel="alternate" hreflang="x-default" href={`https://makoconsult.com${getLocalizedPath('en', canonicalPath)}`} />
+    <link rel="alternate" hreflang="x-default" href={`https://makoconsult.de${getLocalizedPath('en', canonicalPath)}`} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={`${title} | MAKOConsult`} />

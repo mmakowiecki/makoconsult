@@ -15,14 +15,14 @@ const enDePairs = [
 // Build lookup: full EN URL → full DE URL and vice versa
 const hreflangMap = new Map();
 for (const [enSlug, deSlug] of enDePairs) {
-  const enUrl = `https://makoconsult.com/en${enSlug}`;
-  const deUrl = `https://makoconsult.com/de${deSlug}`;
+  const enUrl = `https://makoconsult.de/en${enSlug}`;
+  const deUrl = `https://makoconsult.de/de${deSlug}`;
   hreflangMap.set(enUrl, { en: enUrl, de: deUrl });
   hreflangMap.set(deUrl, { en: enUrl, de: deUrl });
 }
 
 export default defineConfig({
-  site: 'https://makoconsult.com',
+  site: 'https://makoconsult.de',
   output: 'static',
   compressHTML: true,
   vite: {
@@ -30,7 +30,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => page !== 'https://makoconsult.com/',
+      filter: (page) => page !== 'https://makoconsult.de/',
       serialize(item) {
         const pair = hreflangMap.get(item.url);
         if (pair) {
