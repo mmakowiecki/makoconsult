@@ -15,7 +15,8 @@ export function useTranslations(lang: Lang) {
 
 export function getLocalizedPath(lang: Lang, canonicalPath: string): string {
   const localizedSlug = routes[lang]?.[canonicalPath] ?? canonicalPath;
-  return `/${lang}${localizedSlug}`;
+  const path = `/${lang}${localizedSlug}`;
+  return path.endsWith('/') ? path : `${path}/`;
 }
 
 export function getAlternateLang(lang: Lang): Lang {
